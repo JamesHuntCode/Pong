@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace PongGame
 {
     class Ball
     {
-        int radius;
+        private int radius;
+
+        //// Physics engine:
+        //int currentSpeed = 3;
+        //int maxSpeed = 10;
+        //int velocity = 1;
+        //int acceleration = 10;
 
         public Ball(int r)
         {
@@ -16,6 +23,11 @@ namespace PongGame
         }
 
         // Methods:
+
+        public int getRadius()
+        {
+            return this.radius;
+        }
 
         public void updatePos(int d)
         {

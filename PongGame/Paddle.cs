@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using System.Threading.Tasks;
 
 namespace PongGame
 {
     class Paddle
     {
-        int height;
-        int width;
+        private int height;
+        private int width;
 
         public Paddle(int h, int w)
         {
@@ -18,6 +19,16 @@ namespace PongGame
         }
 
         // Methods:
+
+        public int getHeight()
+        {
+            return this.height;
+        }
+
+        public int getWidth()
+        {
+            return this.width;
+        }
 
         public void updatePos(int d)
         {

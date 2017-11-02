@@ -16,7 +16,7 @@ namespace PongGame
         public Form1()
         {
             InitializeComponent();
-            
+            this.KeyDown += Form1_KeyDown;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,41 +36,49 @@ namespace PongGame
             // Call all methods that need updating from here:
 
             draw();
+
         }
 
-        public void setup()
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-           
+            if (e.KeyCode == Keys.Right) // User wants to move right
+            {
+                
+            }
+            else if (e.KeyCode == Keys.Left) // User wants to move left
+            {
+                
+            }
         }
 
         public void draw()
         {
-            Graphics pongPlayArea;
+            Graphics pong;
 
-            pongPlayArea = picPongGame.CreateGraphics();
-            pongPlayArea.Clear(Color.Black);
-        }
+            pong = picPongGame.CreateGraphics();
+            pong.Clear(Color.Black);
 
-        // All button events (GAME CONTROLS):
+            // Draw ball:
 
-        private void btnStart_Click(object sender, EventArgs e) // Start
-        {
-           
-        }
+            Ball b = new Ball(10);
 
-        private void btnPause_Click(object sender, EventArgs e) // Pause
-        {
+            SolidBrush myBrush = new SolidBrush(Color.White);
 
-        }
+            int size = b.getRadius();
 
-        private void btnStop_Click(object sender, EventArgs e) // Stop
-        {
+            pong.FillEllipse(myBrush, (this.picPongGame.Width / 2), (this.picPongGame.Height / 2), size, size);
 
-        }
+            // Draw paddle:
 
-        private void btnRestart_Click(object sender, EventArgs e) // Restart
-        {
+            Paddle p = new Paddle(100, 10);
 
+            Pen myPen = new Pen(Color.White);
+
+            int height = p.getHeight();
+
+            int width = p.getWidth();
+
+            pong.DrawRectangle(myPen, (this.picPongGame.Width / 2), 500, height, width);
         }
     }
 }
