@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.picPongGame = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPongGame)).BeginInit();
@@ -46,41 +46,45 @@
             this.picPongGame.TabIndex = 0;
             this.picPongGame.TabStop = false;
             // 
-            // button1
+            // btnStart
             // 
-            this.button1.Location = new System.Drawing.Point(13, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 46);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "START";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStart.Location = new System.Drawing.Point(13, 13);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(104, 46);
+            this.btnStart.TabIndex = 1;
+            this.btnStart.Text = "START";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button2
+            // btnStop
             // 
-            this.button2.Location = new System.Drawing.Point(233, 13);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 46);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "STOP";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnStop.Location = new System.Drawing.Point(233, 13);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(104, 46);
+            this.btnStop.TabIndex = 2;
+            this.btnStop.Text = "STOP";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // button3
+            // btnPause
             // 
-            this.button3.Location = new System.Drawing.Point(123, 13);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(104, 46);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "PAUSE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPause.Location = new System.Drawing.Point(123, 13);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(104, 46);
+            this.btnPause.TabIndex = 3;
+            this.btnPause.Text = "PAUSE";
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
-            // button4
+            // btnRestart
             // 
-            this.button4.Location = new System.Drawing.Point(343, 13);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(104, 46);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "RESTART";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnRestart.Location = new System.Drawing.Point(343, 13);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(104, 46);
+            this.btnRestart.TabIndex = 4;
+            this.btnRestart.Text = "RESTART";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // lblHeader
             // 
@@ -109,10 +113,10 @@
             this.ClientSize = new System.Drawing.Size(1157, 643);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblHeader);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRestart);
+            this.Controls.Add(this.btnPause);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.picPongGame);
             this.Name = "Form1";
             this.Text = "Pong - James Hunt";
@@ -126,10 +130,10 @@
         #endregion
 
         private System.Windows.Forms.PictureBox picPongGame;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Label label1;
     }
