@@ -12,13 +12,18 @@ namespace PongGame
         private int height;
         private int width;
 
-        public Paddle(int h, int w)
+        private int posX;
+        private int posY;
+
+        public Paddle(int h, int w, int x, int y)
         {
             this.height = h;
             this.width = w;
+            this.posX = x;
+            this.posY = y;
         }
 
-        // Methods:
+        // Getter methods:
 
         public int getHeight()
         {
@@ -30,16 +35,33 @@ namespace PongGame
             return this.width;
         }
 
+        public int getX()
+        {
+            return this.posX;
+        }
+
+        public int getY()
+        {
+            return this.posY;
+        }
+
+        // Behavioural methods:
+
         public void updatePos(int d)
         {
             if (d == 1) // Move right
             {
-
+                this.posX += 50;
             } 
             else // Move left
             {
-
+                this.posX -= 50;
             }
+        }
+
+        public void outOfBounds(int x)
+        {
+
         }
     }
 }

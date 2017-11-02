@@ -39,46 +39,44 @@ namespace PongGame
 
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Right) // User wants to move right
-            {
-                
-            }
-            else if (e.KeyCode == Keys.Left) // User wants to move left
-            {
-                
-            }
-        }
+        Graphics pong;
+
+        Ball b = new Ball(10, 0, 0);
+
+        Paddle p = new Paddle(100, 10, 0, 500);
 
         public void draw()
         {
-            Graphics pong;
-
             pong = picPongGame.CreateGraphics();
             pong.Clear(Color.Black);
 
-            // Draw ball:
-
-            Ball b = new Ball(10);
-
             SolidBrush myBrush = new SolidBrush(Color.White);
+
+            // Draw ball:
 
             int size = b.getRadius();
 
-            pong.FillEllipse(myBrush, (this.picPongGame.Width / 2), (this.picPongGame.Height / 2), size, size);
+            pong.FillEllipse(myBrush, b.getX(), b.getY(), size, size);
 
             // Draw paddle:
-
-            Paddle p = new Paddle(100, 10);
-
-            Pen myPen = new Pen(Color.White);
 
             int height = p.getHeight();
 
             int width = p.getWidth();
 
-            pong.DrawRectangle(myPen, (this.picPongGame.Width / 2), 500, height, width);
+            pong.FillRectangle(myBrush, p.getX(), p.getY(), height, width);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right) // User wants to move right
+            {
+                p.updatePos(1);
+            }
+            else if (e.KeyCode == Keys.Left) // User wants to move left
+            {
+                p.updatePos(0);
+            }
         }
     }
 }
