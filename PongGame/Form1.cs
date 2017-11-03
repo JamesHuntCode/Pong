@@ -17,6 +17,10 @@ namespace PongGame
         {
             InitializeComponent();
 
+            SetStyle(ControlStyles.AllPaintingInWmPaint
+        |   ControlStyles.UserPaint
+        |   ControlStyles.DoubleBuffer, true);
+
             this.KeyDown += Form1_KeyDown;
         }
 
@@ -70,29 +74,38 @@ namespace PongGame
 
             b.updatePos();
 
-            int[] ballCoords = new int[2] { b.getX(), b.getY() };
-            int[] paddleCoods = new int[2] { p.getX(), p.getY() };
+            // Generate developer information:
+
+            this.txtBallX.Text = "Ball X: " + Convert.ToString(b.getX());
+            this.txtPaddleX.Text = "Paddle X: " + Convert.ToString(p.getX());
+
+            this.txtBallY.Text = "Ball Y: " + Convert.ToString(b.getY());
+            this.txtPaddleY.Text = "Paddle Y: " + Convert.ToString(p.getY());
 
             // Ball has hit a wall:
 
-
+            if (b.getX() == 0) // Hit the left wall
+            {
+                b.hitWall("left");
+            }
+            else if (b.getY() == 0) // Hit the top wall
+            {
+                b.hitWall("top");
+            }
+            else if (b.getX() == this.picPongGame.Width) // Hit the right wall
+            {
+                b.hitWall("right");
+            }
 
             // Ball has made contact with the paddle:
 
-            int distance = b.getX() - p.getX();
+            int distance = p.getX() - b.getX();
 
-            if ((p.getY() == b.getY()) && (distance > 0))
+            this.txtDisplayDistance.Text = "Distance: " + Convert.ToString(distance);
+
+            if ((b.getY() == p.getY()) && (-100 <= distance && distance <= 100))
             {
                 b.hitPaddle();
-            }
-
-            // Check ball is on the screen:
-
-            if (b.outOfPlay())
-            {
-                // Generate new ball and remove old one from program entirely 
-                // Take a life away from the user
-                // if user has no lives end the game
             }
         }
 

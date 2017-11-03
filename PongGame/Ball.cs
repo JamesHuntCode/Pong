@@ -58,14 +58,20 @@ namespace PongGame
             this.currentSpeed -= 5;
         }
 
-        public void hitWall()
+        public void hitWall(string wall)
         {
-           
-        }
-
-        public bool outOfPlay() // Return true or false value which indicates ball status
-        {
-            return (this.posY > 0);
+           if (wall == "left")
+           {
+                this.currentSpeed += 10;
+           }
+           else if (wall == "top")
+           {
+                this.currentSpeed += 10;
+           }
+           else if (wall == "right")
+           {
+                this.currentSpeed -= 10;
+           }
         }
     }
 }
