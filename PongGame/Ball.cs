@@ -14,6 +14,9 @@ namespace PongGame
         private int posX;
         private int posY;
 
+        private int currentSpeed = 5;
+        private int maxSpeed = 15;
+
         public Ball(int r, int x, int y)
         {
             this.radius = r;
@@ -40,33 +43,29 @@ namespace PongGame
 
         // Behavioural methods:
 
-        public void updatePos(int d)
+        public void updatePos()
         {
-            
-        }
+            this.posY += currentSpeed;
 
-        public void hitPaddle(bool b)
-        {
-            if (b == true) // User has hit the ball with the paddle
+            if (currentSpeed >= maxSpeed) // Limit the ball's movement to a certain speed
             {
-
+                currentSpeed = maxSpeed;
             }
         }
 
-        public void hitWall(bool b)
+        public void hitPaddle()
         {
-            if (b == true) // The ball has hit a wall
-            {
-                
-            }
+            this.currentSpeed -= 5;
         }
 
-        public void outOfPlay(bool b)
+        public void hitWall()
         {
-            if (b == true) // User has missed the ball and the ball is gone
-            {
+           
+        }
 
-            }
+        public bool outOfPlay() // Return true or false value which indicates ball status
+        {
+            return (this.posY > 0);
         }
     }
 }

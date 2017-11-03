@@ -16,6 +16,7 @@ namespace PongGame
         public Form1()
         {
             InitializeComponent();
+
             this.KeyDown += Form1_KeyDown;
         }
 
@@ -31,22 +32,21 @@ namespace PongGame
             timer.Start();
         }
 
-        public void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
-            // Call all methods that need updating from here:
-
             draw();
-
         }
 
-        Graphics pong;
+        // Defined at class level due to use in multiple methods:
 
-        Ball b = new Ball(10, 0, 0);
+        Ball b = new Ball(10, 540, 100); // Change 2nd and 3rd param when possible - (x and y coords)
 
-        Paddle p = new Paddle(100, 10, 0, 500);
+        Paddle p = new Paddle(100, 10, 500, 500); // Change 3rd param when possible - (x coord)
 
-        public void draw()
+        private void draw()
         {
+            Graphics pong;
+
             pong = picPongGame.CreateGraphics();
             pong.Clear(Color.Black);
 
@@ -65,17 +65,48 @@ namespace PongGame
             int width = p.getWidth();
 
             pong.FillRectangle(myBrush, p.getX(), p.getY(), height, width);
+
+            // Allow ball to move:
+
+            b.updatePos();
+
+            int[] ballCoords = new int[2] { b.getX(), b.getY() };
+            int[] paddleCoods = new int[2] { p.getX(), p.getY() };
+
+            // Ball has hit a wall:
+
+
+
+            // Ball has made contact with the paddle:
+
+            int distance = b.getX() - p.getX();
+
+            if ((p.getY() == b.getY()) && (distance > 0))
+            {
+                b.hitPaddle();
+            }
+
+            // Check ball is on the screen:
+
+            if (b.outOfPlay())
+            {
+                // Generate new ball and remove old one from program entirely 
+                // Take a life away from the user
+                // if user has no lives end the game
+            }
         }
+
+        // Handle user clicking the arrow keys:
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right) // User wants to move right
             {
-                p.updatePos(1);
+                p.updatePos(1, 0, this.picPongGame.Width);
             }
             else if (e.KeyCode == Keys.Left) // User wants to move left
             {
-                p.updatePos(0);
+                p.updatePos(0, 0, this.picPongGame.Width);
             }
         }
     }

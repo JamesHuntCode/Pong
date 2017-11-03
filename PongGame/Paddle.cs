@@ -47,21 +47,26 @@ namespace PongGame
 
         // Behavioural methods:
 
-        public void updatePos(int d)
+        public void updatePos(int d, int leftSide, int rightSide)
         {
             if (d == 1) // Move right
             {
                 this.posX += 50;
+
+                if ((this.posX + 80) > rightSide) // Player has gone too far right
+                {
+                    this.posX -= 50;
+                }
             } 
             else // Move left
             {
                 this.posX -= 50;
+
+                if (this.posX < leftSide) // Player has gone too far left
+                {
+                    this.posX += 50;
+                }
             }
-        }
-
-        public void outOfBounds(int x)
-        {
-
         }
     }
 }
