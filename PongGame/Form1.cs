@@ -45,7 +45,7 @@ namespace PongGame
 
         Ball b = new Ball(10, 540, 100); // Change 2nd and 3rd param when possible - (x and y coords)
 
-        Paddle p = new Paddle(100, 10, 500, 500); // Change 3rd param when possible - (x coord)
+        Paddle p = new Paddle(100, 10, 500, 550); // Change 3rd param when possible - (x coord)
 
         private void draw()
         {
@@ -72,7 +72,8 @@ namespace PongGame
 
             // Allow ball to move:
 
-            b.updatePos();
+            b.updatePos(this.picPongGame.Width, this.picPongGame.Height);
+            b.hitEdges(this.picPongGame.Width, this.picPongGame.Height);
 
             // Generate developer information:
 
@@ -82,26 +83,9 @@ namespace PongGame
             this.txtBallY.Text = "Ball Y: " + Convert.ToString(b.getY());
             this.txtPaddleY.Text = "Paddle Y: " + Convert.ToString(p.getY());
 
-            // Ball has hit a wall:
-
-            if (b.getX() == 0) // Hit the left wall
-            {
-                b.hitWall("left");
-            }
-            else if (b.getY() == 0) // Hit the top wall
-            {
-                b.hitWall("top");
-            }
-            else if (b.getX() == this.picPongGame.Width) // Hit the right wall
-            {
-                b.hitWall("right");
-            }
-
             // Ball has made contact with the paddle:
 
             int distance = p.getX() - b.getX();
-
-            this.txtDisplayDistance.Text = "Distance: " + Convert.ToString(distance);
 
             if ((b.getY() == p.getY()) && (-100 <= distance && distance <= 100))
             {

@@ -14,8 +14,8 @@ namespace PongGame
         private int posX;
         private int posY;
 
-        private int currentSpeed = 5;
-        private int maxSpeed = 15;
+        private int xSpeed = 5;
+        private int ySpeed = 5;
 
         public Ball(int r, int x, int y)
         {
@@ -43,35 +43,38 @@ namespace PongGame
 
         // Behavioural methods:
 
-        public void updatePos()
+        public void updatePos(int windowHeight, int windowWidth)
         {
-            this.posY += currentSpeed;
+            this.posX += xSpeed;
+            this.posY += ySpeed;
+        }
 
-            if (currentSpeed >= maxSpeed) // Limit the ball's movement to a certain speed
+        public void hitEdges(int width, int height)
+        {
+            if (this.posY < 0)
             {
-                currentSpeed = maxSpeed;
+                ySpeed *= -1;
+            }
+
+            if (this.posX < 0 || this.posX > width)
+            {
+                xSpeed *= -1;
+            }
+
+            if (this.posX > height)
+            {
+                reset();
             }
         }
 
         public void hitPaddle()
         {
-            this.currentSpeed -= 5;
+            ySpeed *= -1;
         }
 
-        public void hitWall(string wall)
+        public void reset()
         {
-           if (wall == "left")
-           {
-                this.currentSpeed += 10;
-           }
-           else if (wall == "top")
-           {
-                this.currentSpeed += 10;
-           }
-           else if (wall == "right")
-           {
-                this.currentSpeed -= 10;
-           }
+
         }
     }
 }

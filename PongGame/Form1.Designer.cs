@@ -35,7 +35,6 @@
             this.txtPaddleX = new System.Windows.Forms.Label();
             this.txtPaddleY = new System.Windows.Forms.Label();
             this.txtBallY = new System.Windows.Forms.Label();
-            this.txtDisplayDistance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPongGame)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,21 +102,11 @@
             this.txtBallY.TabIndex = 10;
             this.txtBallY.Text = "Ball Y: ";
             // 
-            // txtDisplayDistance
-            // 
-            this.txtDisplayDistance.AutoSize = true;
-            this.txtDisplayDistance.Location = new System.Drawing.Point(743, 29);
-            this.txtDisplayDistance.Name = "txtDisplayDistance";
-            this.txtDisplayDistance.Size = new System.Drawing.Size(52, 13);
-            this.txtDisplayDistance.TabIndex = 11;
-            this.txtDisplayDistance.Text = "Distance:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1157, 643);
-            this.Controls.Add(this.txtDisplayDistance);
             this.Controls.Add(this.txtBallY);
             this.Controls.Add(this.txtPaddleY);
             this.Controls.Add(this.txtPaddleX);
@@ -143,7 +132,6 @@
         private System.Windows.Forms.Label txtPaddleX;
         private System.Windows.Forms.Label txtPaddleY;
         private System.Windows.Forms.Label txtBallY;
-        private System.Windows.Forms.Label txtDisplayDistance;
     }
 }
 
