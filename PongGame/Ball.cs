@@ -14,14 +14,29 @@ namespace PongGame
         private int posX;
         private int posY;
 
-        private int xSpeed = 5;
-        private int ySpeed = 5;
+        private int xSpeed;
+        private int ySpeed;
+
+        private int numHits;
+        private int highScore;
 
         public Ball(int r, int x, int y)
         {
+            Random rnd = new Random();
+
             this.radius = r;
             this.posX = x;
             this.posY = y;
+
+            if (rnd.Next(0, 2) == 1)
+            {
+                this.xSpeed = -5;
+            }
+            else
+            {
+                this.xSpeed = 5;
+            }
+            this.ySpeed = 5;
         }
 
         // Getter methods:
@@ -41,6 +56,16 @@ namespace PongGame
             return this.posY;
         }
 
+        public int getNumHits()
+        {
+            return this.numHits;
+        }
+
+        public int getHighScore()
+        {
+            return this.highScore;
+        }
+
         // Behavioural methods:
 
         public void updatePos(int windowHeight, int windowWidth)
@@ -49,32 +74,58 @@ namespace PongGame
             this.posY += ySpeed;
         }
 
+        // Method used to bounce the ball off edges correctly:
+
         public void hitEdges(int width, int height)
         {
             if (this.posY < 0)
             {
-                ySpeed *= -1;
+                this.ySpeed *= -1;
             }
 
             if (this.posX < 0 || this.posX > width)
             {
-                xSpeed *= -1;
+                this.xSpeed *= -1;
             }
 
-            if (this.posX > height)
+            if (this.posY > height)
             {
-                reset();
+                resetPosition();
             }
         }
 
         public void hitPaddle()
         {
-            ySpeed *= -1;
+            this.numHits++;
+
+            this.xSpeed++;
+
+            this.ySpeed *= -1;
         }
 
-        public void reset()
-        {
+        // Method called when ball goes off the bottom of the screen:
 
+        public void resetPosition()
+        {
+            this.posX = 540;
+            this.posY = 100;
+
+            Random rnd = new Random();
+
+            if (rnd.Next(0, 2) == 1)
+            {
+                this.xSpeed = -5;
+            }
+            else
+            {
+                this.xSpeed = 5;
+            }
+
+            this.ySpeed = 5;
+
+            this.highScore = numHits;
+
+            this.numHits = 0;
         }
     }
 }

@@ -43,9 +43,9 @@ namespace PongGame
 
         // Defined at class level due to use in multiple methods:
 
-        Ball b = new Ball(10, 540, 100); // Change 2nd and 3rd param when possible - (x and y coords)
+        Ball b = new Ball(15, 100, 500); 
 
-        Paddle p = new Paddle(100, 10, 500, 550); // Change 3rd param when possible - (x coord)
+        Paddle p = new Paddle(120, 15, 500, 550); 
 
         private void draw()
         {
@@ -75,21 +75,22 @@ namespace PongGame
             b.updatePos(this.picPongGame.Width, this.picPongGame.Height);
             b.hitEdges(this.picPongGame.Width, this.picPongGame.Height);
 
-            // Generate developer information:
-
-            this.txtBallX.Text = "Ball X: " + Convert.ToString(b.getX());
-            this.txtPaddleX.Text = "Paddle X: " + Convert.ToString(p.getX());
-
-            this.txtBallY.Text = "Ball Y: " + Convert.ToString(b.getY());
-            this.txtPaddleY.Text = "Paddle Y: " + Convert.ToString(p.getY());
-
             // Ball has made contact with the paddle:
 
             int distance = p.getX() - b.getX();
 
-            if ((b.getY() == p.getY()) && (-100 <= distance && distance <= 100))
+            if ((b.getY() == p.getY()) && (-90 <= distance && distance <= 10))
             {
                 b.hitPaddle();
+            }
+
+            // Check for new high scores and tell user their current score:
+
+            this.lblYourScore.Text = "YOUR SCORE: " + Convert.ToString(b.getNumHits());
+
+            if (b.getNumHits() > b.getHighScore())
+            {
+                this.lblHighScore.Text = "HIGH SCORE: " + Convert.ToString(b.getNumHits());
             }
         }
 
