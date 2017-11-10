@@ -17,16 +17,18 @@ namespace PongGame
         {
             InitializeComponent();
 
-            SetStyle(ControlStyles.AllPaintingInWmPaint
-        |   ControlStyles.UserPaint
-        |   ControlStyles.DoubleBuffer, true);
-
             this.KeyDown += Form1_KeyDown;
         }
 
+        private Ball b;
+        private Paddle p;
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Timer implemented to control the game events:
+            b = new Ball(15, this.picPongGame.Width / 2, this.picPongGame.Height / 2);
+
+            p = new Paddle(120, 15, 500, 550);
+
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
             timer.Interval = 10; // Update every milisecond
@@ -40,12 +42,6 @@ namespace PongGame
         {
             draw();
         }
-
-        // Defined at class level due to use in multiple methods:
-
-        Ball b = new Ball(15, 100, 500); 
-
-        Paddle p = new Paddle(120, 15, 500, 550); 
 
         private void draw()
         {

@@ -83,7 +83,7 @@ namespace PongGame
                 this.ySpeed *= -1;
             }
 
-            if (this.posX < 0 || this.posX > width)
+            if (this.posX < 0 || this.posX > width - this.radius)
             {
                 this.xSpeed *= -1;
             }
