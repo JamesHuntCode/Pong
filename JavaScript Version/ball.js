@@ -15,12 +15,23 @@ function ball(x, y) {
   }
 
   this.bounce = function() {
-    if (this.posY - this.size / 2 < 0 || this.posY + this.size / 2 > height) {
+    if (this.posY - this.size / 2 < 0) {
       this.velY = -this.velY;
     }
 
     if (this.posX - this.size / 2 < 0 || this.posX + this.size / 2 > width) {
       this.velX = -this.velX;
     }
+  }
+
+  this.offScreen = function() {
+    if (this.posY > height) {
+      this.posX = width / 2;
+      this.posY = height / 2;
+    }
+  }
+
+  this.hitPaddle = function(paddleX, paddleY) {
+    return false;
   }
 }
