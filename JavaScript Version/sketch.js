@@ -16,6 +16,10 @@ function draw() {
   ball.bounce();
   ball.offScreen();
 
+  if (ball.hitsPaddle(paddle.posX, paddle.posY, paddle.width)) {
+    ball.velY = -ball.velY;
+  }
+
   // Draw paddle
   paddle.show();
 }

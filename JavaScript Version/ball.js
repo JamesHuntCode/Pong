@@ -2,12 +2,14 @@ function ball(x, y) {
   this.size = 20;
   this.posX = x;
   this.posY = y;
-  this.velX = Math.floor(Math.random()*4)+2;
-  this.velY = Math.floor(Math.random()*4)+2;
+  this.velX = 3;
+  this.velY = 3;
 
   this.update = function() {
     this.posX += this.velX;
     this.posY += this.velY;
+    //this.velX += 0.01;
+    //this.velY += 0.01;
   }
 
   this.show = function() {
@@ -31,7 +33,11 @@ function ball(x, y) {
     }
   }
 
-  this.hitPaddle = function(paddleX, paddleY) {
-    return false;
+  this.hitsPaddle = function(paddleX, paddleY, paddleW) {
+    if ((this.posX - this.size / 2 >= paddleX) && (this.posX + this.size / 2 <= paddleX + paddleW) && (this.posY >= paddleY)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

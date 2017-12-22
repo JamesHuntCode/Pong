@@ -10,9 +10,13 @@ function paddle(x, y) {
 
   this.move = function(direction) {
     if (direction === "left") {
-      this.posX -= 50;
+      if (this.posX - this.width / 2 >= 0) {
+        this.posX -= 50;
+      }
     } else {
-      this.posX += 50;
+      if (this.posX + this.width + 50 <= width) {
+        this.posX += 50;
+      }
     }
   }
 }
