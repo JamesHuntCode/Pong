@@ -8,8 +8,8 @@ function ball(x, y) {
   this.update = function() {
     this.posX += this.velX;
     this.posY += this.velY;
-    //this.velX += 0.01;
-    //this.velY += 0.01;
+    this.velX += 0.01;
+    this.velY += 0.01;
   }
 
   this.show = function() {
